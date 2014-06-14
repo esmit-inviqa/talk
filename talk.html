@@ -1,0 +1,304 @@
+<div class="slides">
+    <section data-id="fbd90ec4a9bfb9369a0efa18df7bc6b1" class="">
+        <h1>Tools, Tips and Tricks for the Magento FE Developer</h1>
+    </section>
+    <section data-id="09b2a11563bd79bb540b9a670e6dd541" class="">
+        <h2 data-fragment-index="0" class="fragment">Talk about some undocumented sides of Magento</h2>
+<ul>
+<li data-fragment-index="1" class="fragment">Debug your layout xml</li>
+<li data-fragment-index="2" class="fragment">Increase performance</li>
+<li data-fragment-index="3" class="fragment">Custom widgets</li>
+<li data-fragment-index="4" class="fragment">Extending core JS<br>
+</li>
+</ul>
+<p>
+        <br>
+    </p>
+<h2 data-fragment-index="5" class="fragment">But also some day-to-day stuff I find interesting</h2>
+<ul style="position: absolute; width: 242px; height: 72px; z-index: 4; left: 314px; top: 483px;" class="absolute-element">
+<li data-fragment-index="6" class="fragment">Grunt integration</li>
+<li data-fragment-index="7" class="fragment">Cache busting</li>
+</ul>
+<p>
+    <br>
+</p>
+</section>
+<section data-id="1ddb3609545a98fadbb6f3d13b0d6189" class="">
+    <h2>How does the layout XML work</h2>
+<p>
+    <br>
+</p>
+<p>1. It starts at the modules</p>
+<p>app/code/core/Mage/Catalog/etc/config.xml</p>
+<pre><code>&lt;layout&gt;<br>    &lt;updates&gt;<br>        &lt;catalog&gt;<br>            &lt;file&gt;catalog.xml&lt;/file&gt;<br>        &lt;/catalog&gt;
+    &lt;/updates&gt;
+&lt;/layout&gt;
+</code></pre>&nbsp;
+2. The layout files are loaded using the design fallback structure. <br>app/design/frontend/base/default/layout/catalog.xml<br>app/design/frontend/package/theme/layout/catalog.xml<br>
+<br>3. It merges all the layout files in to 1 massive xml file<br>
+<br>
+<br>
+<br>
+</section>
+<section data-id="e27b7e350ded14f5de01c505c2144e68" class="">
+    <p>4. On every page Magento will create a relevant list of layout updates based on "Handles"</p>
+<h2>
+    <br>
+</h2>
+<pre><code> var_dump(Mage::getSingleton('core/layout')-&gt;getUpdate()-&gt;getHandles());</code></pre>
+<br>5. To review the all the XML updates<br>
+<br>
+<pre><code> var_dump(Mage::getSingleton('core/layout')-&gt;getUpdate()-&gt;getHandles());</code></pre>If your layout updates are not in this list, the wrong handle is used or the XML file is not loaded at all. <br>
+</section>
+<section data-id="072dd4f62ec1a463886bc9c2aa98f71c" class="">
+    <h2>Disable modules output<br>
+</h2>
+<p>
+    <img style="visibility: visible; width: 387px; height: 237.616px; max-height: none; max-width: none;" src="data:image/png;base64,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" id="save-image" alt="save image">
+</p>
+<p>This doesn't disable the module itself, just the layout XML. <br>
+</p>
+</section>
+<section class="" data-id="0b33ad1b9ef715b3162f682dba3102ce">
+    <h2>Action methods</h2>
+    <p>These are mainly used to map block methods</p>
+    <p>
+    <br>
+</p>
+<pre><code> &lt;block type="catalog/product_list_upsell"&gt;
+     &lt;action method="setItemLimit"&gt;&lt;type&gt;upsell&lt;/type&gt;&lt;limit&gt;4&lt;/limit&gt;&lt;/action&gt;
+     &lt;action method="setColumnCount"&gt;&lt;columns&gt;4&lt;/columns&gt;&lt;/action&gt;
+ &lt;/block&gt;
+</code></pre>
+<p>
+<br>
+</p>
+<div>
+<div>
+<pre style="width: 862.0562744140625px;">
+    <code>
+        <span>class Mage_Catalog_Block_Product_List_Upsell extends Mage_Catalog_Block_Product_Abstract </span>
+        <span style="font-size: 30.030031204223633px;">
+            <br>
+        </span>
+    </code>
+    <code>
+        <span>{</span>
+    </code>
+    <code>
+        <span>/**
+ * Set how many items we need to show in upsell block
+ * Notice: this parameter will be also applied
+ *
+ * @param string $type
+ * @param int $limit
+ * @return Mage_Catalog_Block_Product_List_Upsell
+*/
+public function setItemLimit($type, $limit)
+{
+    if (intval($limit) &gt; 0) {
+        $this-&gt;_itemLimits[$type] = intval($limit);
+    }
+    return $this;
+}<br>
+    </span>
+</code>
+</pre>
+</div>
+</div>
+<br>
+</section>
+<section class="" data-id="3dde1155ab8983a9d1440bf5440a0df3">
+    <p>But they are also useful for passing values through</p>
+    <div style="font-size: 30.030031204223633px; font-style: normal; font-variant: normal;">
+        <pre style="width: 862.0562744140625px;">
+            <code>&lt;block type="core/template" name="test-block" template="test-block"&gt;
+  &lt;action method="setData"&gt;&lt;name&gt;html_class&lt;/name&gt;&lt;value&gt;small&lt;/value&gt;&lt;/action&gt;<br>&lt;/block&gt;</code>
+        </pre>
+    </div>
+    <p style="font-size: 30.030031204223633px; font-style: normal; font-variant: normal;">
+        <br>Fetch the value set using</p>
+        <pre style="font-style: normal; font-variant: normal; width: 862.0562744140625px;">
+            <code> $this-&gt;getHtmlClass();</code>
+        </pre>
+        <br>
+        <h2>Real world examples</h2>
+        <p>
+    </p>
+    <ul>
+        <li>Re-use the same template file multiple times <br>with different html classes</li>
+        <li>Use it to dynamically add url's through the cms<br>
+        </li>
+        <li>Fetch category ID in a core template block, to display&nbsp;<br>a specific category description anywhere on the site</li>
+    </ul>
+    <p>
+</p>
+</section>
+<section class="" data-id="eaf4ba809093d4114153e439c372ac94">
+    <h2>Social media block</h2>
+    <div>
+<pre><code>&lt;div class="social-media"&gt;
+
+&lt;?php if($this-&gt;getFacebookUrl()): ?&gt;
+&lt;a class="facebook" href="&lt;?php echo&nbsp;<span>$this-&gt;getFacebookUrl() ?&gt;</span><span style="font-family: monospace;">"&gt;Facebook&lt;/a&gt;
+</span><span>&lt;?php endif ?&gt;</span></code><code><span><br></span></code><code><span style="font-family: monospace; font-size: 17px; font-style: normal; font-variant: normal;">&lt;?php if($this-&gt;getTwitterUrl()): ?&gt;
+&lt;a class="twitter" href="&lt;?php echo&nbsp;</span><span style="font-family: monospace; font-size: 17px; font-style: normal; font-variant: normal;">$this-&gt;getTwitterUrl() ?&gt;</span><span style="font-family: monospace; font-size: 17px; font-style: normal; font-variant: normal;">"&gt;Twitter&lt;/a&gt;
+</span><span style="font-family: monospace; font-size: 17px; font-style: normal; font-variant: normal;">&lt;?php endif ?&gt;</span><span><br></span></code><code><span style="font-family: monospace; font-size: 17px; font-style: normal; font-variant: normal;"><br></span></code><code><span style="font-family: monospace; font-size: 17px; font-style: normal; font-variant: normal;">&lt;?php if($this-&gt;getGooglePlusUrl()): ?&gt;
+&lt;a class="google-plus" href="&lt;?php echo&nbsp;</span><span style="font-family: monospace; font-size: 17px; font-style: normal; font-variant: normal;">$this-&gt;</span><span style="font-family: monospace; font-size: 17px; font-style: normal; font-variant: normal;">getGooglePlusUrl</span><span style="font-family: monospace; font-size: 17px; font-style: normal; font-variant: normal;">() ?&gt;</span><span style="font-family: monospace; font-size: 17px; font-style: normal; font-variant: normal;">"&gt;Google plus&lt;/a&gt;
+</span><span style="font-family: monospace; font-size: 17px; font-style: normal; font-variant: normal;">&lt;?php endif ?&gt;</span><span style="font-family: monospace; font-size: 17px; font-style: normal; font-variant: normal;"><br></span></code><code>
+&lt;/div&gt;
+</code>    </pre>
+</div>
+<br>
+</section>
+<section class="" data-id="929fb87bd4675f37cad6f9595cbb7884">
+    <h2>Ifconfig</h2>
+    <div>Add conditions to action methods</div>
+    <div>
+<pre><code><span style="background-color: rgba(0, 0, 0, 0.0980392);"><font color="#999988">&lt;action method="unsetChild"  ifconfig="web/sociallinks/enable_sociallinks"&gt;
+  &lt;child&gt;social&lt;/child&gt;
+</font></span><span style="color: rgb(153, 153, 136); background-color: rgba(0, 0, 0, 0.0980392);">&lt;/action&gt;</span></code>    </pre>
+</div>Useful for allowing the admin to enable/disable blocks with one click<br>
+<div>
+    <br>
+</div>
+<div>
+    <br>
+</div>
+</section>
+<section class="" data-id="6f3b0c0c0dde6d15a84810e507b936cc">
+    <p>Creating configuration values is easy, and doesn't require<br>any programming.<br>
+    <br>
+</p>
+<pre><code>&lt;?xml version="1.0"?&gt;
+&lt;config&gt;
+    &lt;sections&gt;
+        &lt;web&gt;
+            &lt;groups&gt;
+                &lt;sociallinks&gt;
+                    &lt;label&gt;Social Media URLs&lt;/label&gt;
+                    &lt;frontend_type&gt;text&lt;/frontend_type&gt;
+                    &lt;sort_order&gt;1&lt;/sort_order&gt;
+                    &lt;show_in_default&gt;1&lt;/show_in_default&gt;
+                    &lt;show_in_website&gt;1&lt;/show_in_website&gt;
+                    &lt;show_in_store&gt;1&lt;/show_in_store&gt;
+                    &lt;fields&gt;
+                        &lt;enable_sociallinks translate="label"&gt;
+                            &lt;label&gt;Disable Social Links&lt;/label&gt;
+                            &lt;comment&gt;&lt;/comment&gt;
+                            &lt;frontend_type&gt;select&lt;/frontend_type&gt;
+                            &lt;sort_order&gt;90&lt;/sort_order&gt;
+                            &lt;show_in_default&gt;1&lt;/show_in_default&gt;
+                            &lt;show_in_website&gt;1&lt;/show_in_website&gt;
+                            &lt;show_in_store&gt;1&lt;/show_in_store&gt;
+                       &lt;source_model&gt;adminhtml/system_config_source_yesno&lt;/source_model&gt;
+                        &lt;/enable_sociallinks&gt;
+                    &lt;/fields&gt;
+                &lt;/sociallinks&gt;
+            &lt;/groups&gt;
+        &lt;/web&gt;
+    &lt;/sections&gt;
+&lt;/config&gt;</code></pre>
+<br>
+</section>
+<section class="" data-id="d8fde9af7126f05f31b6277171491685">
+    <p>Display category description anywhere</p>
+<pre><code>&lt;?php
+if($this-&gt;getCategoryId()) {
+    $category = Mage::getModel('catalog/category')-&gt;load($this-&gt;getCategoryId());
+    echo $category-&gt;getDescription();
+}
+?&gt;</code></pre>Add this anywhere using<br>
+<pre><code><span style="color: rgb(153, 153, 136); background-color: rgba(0, 0, 0, 0.0980392);">&lt;reference name="content"&gt;
+</span><span style="color: rgb(153, 153, 136); background-color: rgba(0, 0, 0, 0.0980392);"><br></span></code><code><span style="color: rgb(153, 153, 136); background-color: rgba(0, 0, 0, 0.0980392);">&lt;block type="core/template" name="descr" template="page/category-description.phtml"&gt;            </span><span style="color: rgb(153, 153, 136); background-color: rgba(0, 0, 0, 0.0980392);">&lt;action method="setData"&gt;&lt;name&gt;category_id&lt;/name&gt;&lt;value&gt;3&lt;/value&gt;&lt;/action&gt;
+</span><span style="color: rgb(153, 153, 136); background-color: rgba(0, 0, 0, 0.0980392);">&lt;/block&gt;
+</span><span style="color: rgb(153, 153, 136); background-color: rgba(0, 0, 0, 0.0980392);"><br></span></code><code><span style="color: rgb(153, 153, 136); background-color: rgba(0, 0, 0, 0.0980392);">&lt;/reference&gt;</span></code></pre>
+<br>
+</section>
+<section class="" data-id="a4cee37b8cdaec2db3fdce4d7df7e211">
+    <h2>Using getData()&nbsp;</h2>
+    <div>Easy way to find out what is stored in the object</div>
+    <div>
+        <br>
+    </div>
+    <div>
+<pre><code>&lt;?php
+  $category = Mage::getModel('catalog/category')-&gt;load(3);
+  var_dump($category-&gt;getData());
+?&gt;
+</code>    </pre>
+</div>
+<div>
+    <br>
+</div>Get specific data<br>
+<div>
+    <span>'created_at' becomes '$category-&gt;getCreatedAt()'</span>
+    <br>
+</div>
+</section>
+<section class="" data-id="5302e9246b635902feb9dce870bbbd04">
+    <h2>What if attributes are missing?</h2>
+    <div>Sometimes you can't get the data you want (e.g. in the default category navigation sidebar).</div>
+    <div>
+        <br>
+    </div>
+    <div>Magento forums suggest to load the<br>&nbsp;category model for each iteration.</div>
+    <div>
+        <br>
+    </div>
+    <div>
+<pre><code> $category = Mage::getModel('catalog/category')-&gt;load($child-&gt;getId());</code>    </pre>
+</div>
+<div>
+    <br>
+</div>
+<div>Never use the forums to seek for sound advice!&nbsp;</div>
+<div>
+    <br>
+</div>
+<div>
+    <br>
+</div>
+</section>
+<section class="" data-id="d0845a6c1ed28717ffb985cde98b4f72">
+    <h2>Collections are more efficient.&nbsp;</h2>
+<pre><code>$children = Mage::getModel('catalog/category')-&gt;getCollection()
+    -&gt;addAttributeToSelect('thumbnail');
+
+
+foreach($children as $child) {
+    echo $child-&gt;getThumbnail(). '&lt;br /&gt;';
+}
+
+</code></pre>Now Magento will only look in the database for the attributes it needs. And the database is only accessed once.&nbsp;<br>
+<div>
+    <br>
+</div>
+<div>It also offers more flexibility for sorting and filtering.</div>
+<div>
+    <br>
+</div>
+<div>
+<pre><code>$children = Mage::getModel('catalog/category')
+    -&gt;getCollection()
+    -&gt;addFieldToFilter('parent_id', $category-&gt;getId())
+    -&gt;addAttributeToSelect('name')
+    -&gt;addAttributeToSort('name','DESC');
+
+foreach($children as $child) {
+    echo $child-&gt;getName(). '&lt;br /&gt;';
+}</code></pre>
+</div>
+<br>
+</section>
+<section class="" data-id="fa81b800d8f8791f89919abfbd6c2434">
+    <h2>Nobody likes Prototype JS</h2>
+    <div>Except Magento 5 years ago...&nbsp;</div>
+    <div>
+        <br>
+    </div>
+    <div>
+        <br>
+    </div>
+</section>
+</div>
