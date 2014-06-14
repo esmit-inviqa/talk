@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Talk_Examples>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Talk_Examples>
+    </modules>
+</config>
