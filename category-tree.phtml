@@ -1,0 +1,30 @@
+<div>
+<br />
+<?php
+$category = Mage::getModel('catalog/category')->load(3);
+
+//Bad
+$children = $category->getChildrenCategories();
+
+foreach($children as $child) {
+    $child = Mage::getModel('catalog/category')->load($child->getId());
+    echo $child->getName(). ' - '. $child->getThumbnail() .'<br />';
+}
+
+echo '<hr />';
+
+//Better
+$subCategories = Mage::getModel('catalog/category')
+    ->getCollection()
+    ->addFieldToFilter('parent_id', $category->getId())
+    ->addAttributeToSelect('name')
+    ->addAttributeToSelect('thumbnail')
+    ->addAttributeToSort('name','DESC');
+
+foreach($subCategories as $subCategory) {
+    echo $subCategory->getName(). ' - '. $subCategory->getThumbnail() .'<br />';
+}
+
+?>
+
+</div>
