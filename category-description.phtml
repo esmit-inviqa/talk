@@ -1,0 +1,13 @@
+<?php
+if($this->getCategoryId()) {
+    $category = Mage::getModel('catalog/category')->load($this->getCategoryId());
+    echo $category->getDescription();
+}
+?>
+<!--
+<reference name="content">
+<block type="core/template" name="descr" template="page/category-description.phtml">
+<action method="setData"><name>category_id</name><value>3</value></action>
+</block>
+</reference>
+-->
