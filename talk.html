@@ -61,8 +61,8 @@
 </section>
 <section class="" data-id="0b33ad1b9ef715b3162f682dba3102ce">
     <h2>Action methods</h2>
-    <p>These are mainly used to map block methods</p>
-    <p>
+<p>These are mainly used to map block methods</p>
+<p>
     <br>
 </p>
 <pre><code> &lt;block type="catalog/product_list_upsell"&gt;
@@ -110,33 +110,33 @@ public function setItemLimit($type, $limit)
 </section>
 <section class="" data-id="3dde1155ab8983a9d1440bf5440a0df3">
     <p>But they are also useful for passing values through</p>
-    <div style="font-size: 30.030031204223633px; font-style: normal; font-variant: normal;">
-        <pre style="width: 862.0562744140625px;">
-            <code>&lt;block type="core/template" name="test-block" template="test-block"&gt;
+<div style="font-size: 30.030031204223633px; font-style: normal; font-variant: normal;">
+    <pre style="width: 862.0562744140625px;">
+        <code>&lt;block type="core/template" name="test-block" template="test-block"&gt;
   &lt;action method="setData"&gt;&lt;name&gt;html_class&lt;/name&gt;&lt;value&gt;small&lt;/value&gt;&lt;/action&gt;<br>&lt;/block&gt;</code>
-        </pre>
-    </div>
-    <p style="font-size: 30.030031204223633px; font-style: normal; font-variant: normal;">
-        <br>Fetch the value set using</p>
-        <pre style="font-style: normal; font-variant: normal; width: 862.0562744140625px;">
-            <code> $this-&gt;getHtmlClass();</code>
-        </pre>
-        <br>
-        <h2>Real world examples</h2>
-        <p>
-    </p>
-    <ul>
-        <li>Re-use the same template file multiple times <br>with different html classes</li>
-        <li>Use it to dynamically add url's through the cms<br>
-        </li>
-        <li>Fetch category ID in a core template block, to display&nbsp;<br>a specific category description anywhere on the site</li>
-    </ul>
-    <p>
+    </pre>
+</div>
+<p style="font-size: 30.030031204223633px; font-style: normal; font-variant: normal;">
+<br>Fetch the value set using</p>
+<pre style="font-style: normal; font-variant: normal; width: 862.0562744140625px;">
+<code> $this-&gt;getHtmlClass();</code>
+</pre>
+<br>
+<h2>Real world examples</h2>
+<p>
+</p>
+<ul>
+<li>Re-use the same template file multiple times <br>with different html classes</li>
+<li>Use it to dynamically add url's through the cms<br>
+</li>
+<li>Fetch category ID in a core template block, to display&nbsp;<br>a specific category description anywhere on the site</li>
+</ul>
+<p>
 </p>
 </section>
 <section class="" data-id="eaf4ba809093d4114153e439c372ac94">
     <h2>Social media block</h2>
-    <div>
+<div>
 <pre><code>&lt;div class="social-media"&gt;
 
 &lt;?php if($this-&gt;getFacebookUrl()): ?&gt;
@@ -147,23 +147,23 @@ public function setItemLimit($type, $limit)
 &lt;a class="google-plus" href="&lt;?php echo&nbsp;</span><span style="font-family: monospace; font-size: 17px; font-style: normal; font-variant: normal;">$this-&gt;</span><span style="font-family: monospace; font-size: 17px; font-style: normal; font-variant: normal;">getGooglePlusUrl</span><span style="font-family: monospace; font-size: 17px; font-style: normal; font-variant: normal;">() ?&gt;</span><span style="font-family: monospace; font-size: 17px; font-style: normal; font-variant: normal;">"&gt;Google plus&lt;/a&gt;
 </span><span style="font-family: monospace; font-size: 17px; font-style: normal; font-variant: normal;">&lt;?php endif ?&gt;</span><span style="font-family: monospace; font-size: 17px; font-style: normal; font-variant: normal;"><br></span></code><code>
 &lt;/div&gt;
-</code>    </pre>
+</code></pre>
 </div>
 <br>
 </section>
 <section class="" data-id="929fb87bd4675f37cad6f9595cbb7884">
     <h2>Ifconfig</h2>
-    <div>Add conditions to action methods</div>
-    <div>
+<div>Add conditions to action methods</div>
+<div>
 <pre><code><span style="background-color: rgba(0, 0, 0, 0.0980392);"><font color="#999988">&lt;action method="unsetChild"  ifconfig="web/sociallinks/enable_sociallinks"&gt;
   &lt;child&gt;social&lt;/child&gt;
-</font></span><span style="color: rgb(153, 153, 136); background-color: rgba(0, 0, 0, 0.0980392);">&lt;/action&gt;</span></code>    </pre>
+</font></span><span style="color: rgb(153, 153, 136); background-color: rgba(0, 0, 0, 0.0980392);">&lt;/action&gt;</span></code></pre>
 </div>Useful for allowing the admin to enable/disable blocks with one click<br>
 <div>
     <br>
 </div>
 <div>
-    <br>
+<br>
 </div>
 </section>
 <section class="" data-id="6f3b0c0c0dde6d15a84810e507b936cc">
@@ -202,7 +202,7 @@ public function setItemLimit($type, $limit)
 <br>
 </section>
 <section class="" data-id="d8fde9af7126f05f31b6277171491685">
-    <p>Display category description anywhere</p>
+<p>Display category description anywhere</p>
 <pre><code>&lt;?php
 if($this-&gt;getCategoryId()) {
     $category = Mage::getModel('catalog/category')-&gt;load($this-&gt;getCategoryId());
@@ -217,51 +217,51 @@ if($this-&gt;getCategoryId()) {
 </section>
 <section class="" data-id="a4cee37b8cdaec2db3fdce4d7df7e211">
     <h2>Using getData()&nbsp;</h2>
-    <div>Easy way to find out what is stored in the object</div>
-    <div>
-        <br>
-    </div>
-    <div>
+<div>Easy way to find out what is stored in the object</div>
+<div>
+    <br>
+</div>
+<div>
 <pre><code>&lt;?php
   $category = Mage::getModel('catalog/category')-&gt;load(3);
   var_dump($category-&gt;getData());
 ?&gt;
-</code>    </pre>
+</code></pre>
 </div>
 <div>
-    <br>
+<br>
 </div>Get specific data<br>
 <div>
-    <span>'created_at' becomes '$category-&gt;getCreatedAt()'</span>
-    <br>
+<span>'created_at' becomes '$category-&gt;getCreatedAt()'</span>
+<br>
 </div>
 </section>
 <section class="" data-id="5302e9246b635902feb9dce870bbbd04">
     <h2>What if attributes are missing?</h2>
-    <div>Sometimes you can't get the data you want (e.g. in the default category navigation sidebar).</div>
-    <div>
-        <br>
-    </div>
-    <div>Magento forums suggest to load the<br>&nbsp;category model for each iteration.</div>
-    <div>
-        <br>
-    </div>
-    <div>
-<pre><code> $category = Mage::getModel('catalog/category')-&gt;load($child-&gt;getId());</code>    </pre>
-</div>
+<div>Sometimes you can't get the data you want (e.g. in the default category navigation sidebar).</div>
 <div>
     <br>
+</div>
+<div>Magento forums suggest to load the<br>&nbsp;category model for each iteration.</div>
+<div>
+<br>
+</div>
+<div>
+<pre><code> $category = Mage::getModel('catalog/category')-&gt;load($child-&gt;getId());</code></pre>
+</div>
+<div>
+<br>
 </div>
 <div>Never use the forums to seek for sound advice!&nbsp;</div>
 <div>
-    <br>
+<br>
 </div>
 <div>
-    <br>
+<br>
 </div>
 </section>
 <section class="" data-id="d0845a6c1ed28717ffb985cde98b4f72">
-    <h2>Collections are more efficient.&nbsp;</h2>
+<h2>Collections are more efficient.&nbsp;</h2>
 <pre><code>$children = Mage::getModel('catalog/category')-&gt;getCollection()
     -&gt;addAttributeToSelect('thumbnail');
 
@@ -276,7 +276,7 @@ foreach($children as $child) {
 </div>
 <div>It also offers more flexibility for sorting and filtering.</div>
 <div>
-    <br>
+<br>
 </div>
 <div>
 <pre><code>$children = Mage::getModel('catalog/category')
@@ -293,12 +293,309 @@ foreach($children as $child) {
 </section>
 <section class="" data-id="fa81b800d8f8791f89919abfbd6c2434">
     <h2>Nobody likes Prototype JS</h2>
-    <div>Except Magento 5 years ago...&nbsp;</div>
+<div>Except Magento 5 years ago...&nbsp;</div>
+<div>
+    <br>
+</div>
+<div>Let's say you want to change the search auto-complete.</div>
+<div>
+    <br>
+</div>
+<div>
+<pre><code> &lt;script type="text/javascript"&gt; 
+//&lt;![CDATA[
+    var searchForm = new Varien.searchForm('search_mini_form', 'search', '
+    &lt;?php echo $this-&gt;__('Product name or item no.') ?&gt;'); 
+
+    searchForm.initAutocomplete('&lt;?php echo $catalogSearchHelper-&gt;getSuggestUrl() ?&gt;', 
+    'search_autocomplete'); 
+//]]&gt; 
+&lt;/script&gt;
+</code></pre>
+</div>
+<p>You could copy the existing file (js/varien/js.js) over and amend this<br>
+<br>
+</p>
+<p>or...</p>
+</section>
+<section class="" data-id="d18645e7282013df48500ae5345c2023">
+    <p>Use "AddMethods"</p>
+    <p>
+    <br>
+</p>
+<pre><code> Varien.searchForm.addMethods({
+   initAutocomplete: function(url, destinationElement) {
+
+       //Use whatever you want
+
+   } 
+});    
+</code></pre>As long if this is included after the core js, this will overwrite the existing method.&nbsp;<br>
+</section>
+<section class="" data-id="01d4fe81c58794d8485405bdc57ae657">
+    <h2>Custom widgets</h2>
+    <p>
+</p>
+<ul>
+    <li>
+        <span style="text-align: center;">Stop clients writing html</span>
+        <br>
+    </li>
+    <li>
+        <span style="text-align: center;">Easy to configure</span>
+        <br>
+    </li>
+    <li>
+        <span style="text-align: center;">No proper coding required, no need for backend devs<br>
+        </span>
+    </li>
+    <li>They are basically template blocks +</li>
+</ul>
+<p>
+</p>
+</section>
+<section class="" data-id="71c120cad75109f6d91c4c6578bfcd09">
+    <h2>Create a video widget</h2>
+    <p>Create widget.xml</p>
+<pre><code>&lt;?xml version="1.0"?&gt; 
+&lt;widgets&gt;
+  &lt;talk_examples_video type="examples/video"&gt;
+    &lt;name&gt;Video example widget&lt;/name&gt;
+    &lt;description type="desc"&gt;This widget displays a video&lt;/description&gt; 
+  &lt;/talk_examples_video&gt;
+&lt;/widgets&gt;
+</code></pre>type="examples/video" links to block class &nbsp;Talk_Examples_Block_Video.php<br>
+<div>
+    <br>
+</div>
+<div>So we have to create a block class, config.xml:</div>
+<div>
+<pre><code>&lt;?xml version="1.0"?&gt;
+&lt;config&gt;
+  &lt;global&gt;
+    &lt;blocks&gt;
+      &lt;examples&gt;
+        &lt;class&gt;Talk_Examples_Block&lt;/class&gt;
+      &lt;/examples&gt;
+    &lt;/blocks&gt;
+  &lt;/global&gt;
+&lt;/config&gt;
+</code></pre>
+</div>
+<br>
+</section>
+<section class="" data-id="913fa17adede9fcea65ff5c24417a03c">
+    <p>Create Talk/Examples/Block/Video.php</p>
+<pre><code>&lt;?php 
+class Talk_Examples_Block_Video extends Mage_Core_Block_Abstract 
+implements Mage_Widget_Block_Interface 
+
+{ 
+
+    protected function _toHtml() { 
+        return '&lt;iframe width="560" height="315" src="//www.youtube.com/embed/NHRW-6Egd2Y"
+                frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;'; 
+    } 
+
+}
+</code></pre>Let's take it for a spin...<br>
+</section>
+<section class="" data-id="5e156c6d5be561210445cb766ead8999">
+    <p>The widget is useless, let's improve it</p>
+    <p>
+    <br>
+</p>
+<pre><code>protected function _toHtml() { 
+    $videoId = $this-&gt;getVideoId(); 
+    return '&lt;iframe width="560" height="315" src="//www.youtube.com/embed/'. $videoId 
+           .'"frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;'; 
+}
+</code></pre>
+<p>
+<br>
+</p>
+<p>Insert the video_id using the wysiwyg</p>
+<pre><code> {{widget type="examples/video" video_id="uEE9mkpr9fI"}}</code></pre>
+<p>
+<br>
+</p>
+</section>
+<section class="" data-id="b7782ec80e3d662a6294b1d4b3a270dd">
+    <p>We can do better, it's still not really easy for clients that dislike&nbsp;<br>
+    <span>wysiwyg editors</span>
+</p>
+<p>
+<br>
+</p>
+<p>Add some more xml to widget.xml</p>
+<pre><code>&lt;parameters&gt;
+  &lt;video_id&gt;
+    &lt;required&gt;1&lt;/required&gt;
+    &lt;visible&gt;1&lt;/visible&gt;
+    &lt;label&gt;Video ID&lt;/label&gt;
+    &lt;type&gt;text&lt;/type&gt;
+  &lt;/video_id&gt;
+&lt;/parameters&gt;
+</code></pre>
+<br>
+</section>
+<section class="" data-id="758ab6a6242c0abbe6b325c944c07fb8">
+    <p>Improve the front end</p>
+    <p>
+    <br>
+</p>
+<p>More xml...</p>
+<pre><code>&lt;template&gt;
+  &lt;required&gt;1&lt;/required&gt;
+  &lt;visible&gt;0&lt;/visible&gt;
+  &lt;value&gt;widgets/video.phtml&lt;/value&gt;
+  &lt;type&gt;text&lt;/type&gt;
+&lt;/template&gt;</code></pre>Change block class<br>
+<div>
+<pre><code> class Talk_Examples_Block_Video extends Mage_Core_Block_Template
+    implements Mage_Widget_Block_Interface</code></pre>
+</div>
+<br>
+<div>Add template file widgets/video.phtml</div>
+<div>
+<pre><code>&lt;iframe width="560" height="315" src="//www.youtube.com/embed/
+   &lt;?php echo $this-&gt;getVideoId() ?&gt;" frameborder="0" allowfullscreen&gt;
+&lt;/iframe&gt;
+</code></pre>
+</div>
+<br>
+</section>
+<section class="" data-id="30ffa69f0cac70d045211dd330695ed1">
+    <p>You demo it to the client, they love it, but what about Vimeo?</p>
+    <p class="fragment" data-fragment-index="0">
+        <img src="http://rack.3.mshcdn.com/media/ZgkyMDEzLzA2LzEyL2FhL0NoYXJsaWVNY2RvLmFmOTNkLmdpZgpwCXRodW1iCTEyMDB4OTYwMD4/561e9b54/f87/Charlie-Mcdonnell.gif" alt="Charlie Mcdonnell">
+        <br>
+    </p>
+</section>
+<section class="" data-id="f5b5a9f12a1c68f93b7dd80bc9801c71">
+    <p>That's not a problem, we just need more XML</p>
+<pre><code>&lt;template&gt;
+  &lt;required&gt;1&lt;/required&gt;
+  &lt;visible&gt;1&lt;/visible&gt;
+  &lt;label&gt;Source&lt;/label&gt;
+  &lt;value&gt;widgets/youtube.phtml&lt;/value&gt;
+  &lt;type&gt;select&lt;/type&gt;
+  &lt;values&gt;
+    &lt;youtube&gt;
+       &lt;value&gt;widgets/youtube.phtml&lt;/value&gt;
+       &lt;label&gt;Youtube&lt;/label&gt;
+    &lt;/youtube&gt;
+    &lt;vimeo&gt;
+       &lt;value&gt;widgets/vimeo.phtml&lt;/value&gt;
+       &lt;label&gt;Vimeo&lt;/label&gt;
+    &lt;/vimeo&gt;
+   &lt;/values&gt;
+&lt;/template&gt;</code></pre>And a template file widgets/vimeo.phtml<br>
+<div>
+<pre><code> &lt;iframe src="//player.vimeo.com/video/&lt;?php echo $this-&gt;getVideoId() ?&gt;" 
+  width="500" height="281" frameborder="0"&gt;&lt;/iframe&gt;
+</code></pre>
+</div>And rename video.phtml to youtube.phtml<br>
+<div>
+    <br>
+</div>
+<div>Be careful with this, this could potentially mess up, if loads of widgets already exit across cms pages</div>
+</section>
+<section class="" data-id="eee85ccd474bbf6f84c2e563b03466e0">
+    <h2>Widget definition</h2>
+    <div>
+        <p class="MsoNormal">
+        </p>
+        <ol>
+            <li>
+                <span style="text-align: center;">Widgets are Magento Template Blocks<br>
+                </span>
+                <br>
+            </li>
+            <li>
+                <span style="text-align: center;">Widgets Contain Structured Data<br>
+                </span>
+                <br>
+            </li>
+            <li>
+                <span style="text-align: center;">Widgets Contain Rules for Building User Interfaces<br>
+                </span>
+                <br>
+            </li>
+            <li>
+                <span style="text-align: center;">&nbsp;</span>
+                <span style="text-align: center;">Widgets are formally
+associated with <br>a number of phtml template files&nbsp;<br>
+            </span>
+            <br>
+        </li>
+        <li>
+            <span style="text-align: center;">Widgets contain rules that say which <br>blocks in the layout
+system are allowed to contain them</span>
+            <br>
+        </li>
+    </ol>
     <div>
         <br>
     </div>
-    <div>
-        <br>
-    </div>
+    <div>We haven't covered point 5 yet</div>
+    <p>
+</p>
+
+
+
+
+
+
+
+</div>
+</section>
+<section class="" data-id="8e82ed2ba032ab72f5fd074a4958d883">
+    <p>What if the client wants to add the video to multiple pages, categories or products?</p>
+    <p>
+    <br>
+</p>
+<p>That's where "widget instances" step in</p>
+<p>
+<br>
+</p>
+<p>
+<br>
+</p>
+</section>
+<section class="" data-id="46fc5881238cf43e2b890e36ee9e5591">
+    <h3>Stop the client from abusing the widgets</h3>
+    <p>With adding more xml you can restrict the widget for a couple of structural blocks</p>
+    <p>
+    <br>
+</p>
+<pre><code>&lt;supported_blocks&gt;
+  &lt;content_blocks&gt;
+    &lt;block_name&gt;content&lt;/block_name&gt;
+    &lt;template&gt;
+      &lt;youtube&gt;youtube&lt;/youtube&gt;
+      &lt;vimeo&gt;vimeo&lt;/vimeo&gt;
+    &lt;/template&gt;
+  &lt;/<span style="font-family: monospace; font-size: 17px; font-style: normal; font-variant: normal;">content_blocks</span>&gt;
+
+  &lt;sidebar&gt;
+    &lt;block_name&gt;left&lt;/block_name&gt;
+    &lt;template&gt;
+      &lt;youtube&gt;youtube&lt;/youtube&gt;
+    &lt;/template&gt;
+  &lt;/sidebar&gt;
+&lt;/supported_blocks&gt;</code></pre>
+<br>
+</section>
+<section class="" data-id="0e6cf2abdfedb2fe076243f4bae5a626">
+    <p>To display the widget anywhere else, simply add a new structural block to your local.xml</p>
+<pre><code>&lt;block type="core/text_list" name="placeholder" translate="label"&gt;
+  &lt;label&gt;Placeholder&lt;/label&gt;
+&lt;/block&gt;</code></pre>
+<p>Don't forget to include this in your template files</p>
+<p>
+<br>
+</p>
+<p>Widgets don't support the fallback system</p>
 </section>
 </div>
