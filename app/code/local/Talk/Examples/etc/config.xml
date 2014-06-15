@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config>
+    <global>
+        <blocks>
+            <examples>
+                <class>Talk_Examples_Block</class>
+            </examples>
+        </blocks>
+    </global>
+</config>
