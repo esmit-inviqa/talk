@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<widgets>
+    <talk_examples_video type="examples/video">
+        <name>Video example widget</name>
+        <description type="desc">
+            This widget displays a video
+        </description>
+
+        <parameters>
+            <video_id>
+                <required >1</required>
+                <visible>1</visible>
+                <label>Video ID</label>
+                <type>text</type>
+            </video_id>
+
+            <template>
+                <required>1</required>
+                <visible>1</visible>
+                <label>Source</label>
+                <value>widgets/youtube.phtml</value>
+                <type>select</type>
+                <values>
+                    <youtube>
+                        <value>widgets/youtube.phtml</value>
+                        <label>Youtube</label>
+                    </youtube>
+                    <vimeo>
+                        <value>widgets/vimeo.phtml</value>
+                        <label>Vimeo</label>
+                    </vimeo>
+                </values>
+            </template>
+        </parameters>
+
+        <supported_blocks>
+            <content_blocks>
+                <block_name>content</block_name>
+                <template>
+                    <youtube>youtube</youtube>
+                    <vimeo>vimeo</vimeo>
+                </template>
+            </content_blocks>
+
+            <sidebar>
+                <block_name>left</block_name>
+                <template>
+                    <youtube>youtube</youtube>
+                    <vimeo>vimeo</vimeo>
+                </template>
+            </sidebar>
+        </supported_blocks>
+
+    </talk_examples_video>
+</widgets>
+
